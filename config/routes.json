@@ -1,0 +1,210 @@
+{
+    "start":
+    {
+        "controller": "Controller/PageController/IndexPageController",
+        "action": "draw",
+        "parameters":
+        {
+            "type": "generic",
+            "page": "start"
+        },
+        "method": "get"
+    },
+    "about":
+    {
+        "controller": "Controller/PageController/IndexPageController",
+        "action": "draw",
+        "parameters":
+        {
+            "type": "generic",
+            "page": "about",
+            "submenu": "about"
+        },
+        "method": "get"
+    },
+    "contact":
+    {
+        "controller": "Controller/PageController/IndexPageController",
+        "action": "draw",
+        "parameters":
+        {
+            "type": "generic",
+            "page": "contact"
+        },
+        "method": "get"
+    },
+    "history":
+    {
+        "controller": "Controller/PageController/IndexPageController",
+        "action": "draw",
+        "parameters":
+        {
+            "type": "generic",
+            "page": "history",
+            "submenu": "about"
+        },
+        "method": "get"
+    },
+    "flats":
+    {
+        "controller": "Controller/PageController/IndexPageController",
+        "action": "draw",
+        "parameters":
+        {
+            "type": "generic",
+            "page": "flats",
+            "submenu": "about"
+        },
+        "method": "get"
+    },
+    "gallery":
+    {
+        "controller": "Controller/PageController/IndexPageController",
+        "action": "draw",
+        "parameters":
+        {
+            "page": "gallery"
+        },
+        "method": "get"
+    },
+    "member":
+    {
+        "controller": "Controller/PageController/IndexPageController",
+        "action": "draw",
+        "parameters":
+        {
+            "page": "member"
+        },
+        "method": "get"
+    },
+    "pageeditor":
+    {
+        "controller": "Controller/EditorController",
+        "action": "view",
+        "method": "get"
+    },
+    "editor/article/{id}":
+    {
+        "controller": "Controller/PageController/AboutPageController",
+        "action": "draw",
+        "method": "get"
+    },
+    "editor/article/{id}/{type}":
+    {
+        "controller": "Controller/PageController/AboutPageController",
+        "action": "draw",
+        "method": "get"
+    },
+    "api/page/save":
+    {
+        "controller": "Controller/EditorController/SavePageController",
+        "action": "save",
+        "method": "post"
+    },
+    "admin":
+    {
+        "controller": "Controller/AdminController/SecurityController",
+        "action": "login",
+        "method": "get"
+    },
+    "member/dologin":
+    {
+        "controller": "Controller/AdminController/SecurityController",
+        "action": "authenticate",
+        "method": "post"
+    },
+    "member/{resource}":
+    {
+        "controller": "Controller/PageController/IndexPageController",
+        "action": "draw",
+        "parameters":
+        {
+            "page": "member"
+        },
+        "method": "get",
+        "authorize": "Common"
+    },
+    "enter/editmode":
+    {
+        "controller": "Controller/EditorController",
+        "action": "enableEditorMode",
+        "method": "get",
+        "authorize": "Editor"
+    },
+    "exit/editmode":
+    {
+        "controller": "Controller/EditorController",
+        "action": "disableEditorMode",
+        "method": "get"
+    },
+    "upload/solbybladet":
+    {
+        "controller": "Controller/UploadController",
+        "action": "uploadFile",
+        "method": "post",
+        "authorize": "Editor",
+        "parameters":
+        {
+            "uploadDirectory": "uploads/solbybladet"
+        }
+    },
+    "upload/image":
+    {
+        "controller": "Controller/UploadController",
+        "action": "uploadImage",
+        "method": "post",
+        "authorize": "Editor",
+        "parameters":
+        {
+            "uploadDirectory": "uploads/images/reviewing"
+        }
+    },
+    "reload/solbybladet":
+    {
+        "controller": "Controller/PageController/AjaxController",
+        "action": "load",
+        "method": "get",
+        "authorize": "Editor",
+        "parameters":
+        {
+            "load": "solbybladet"
+        }
+    },
+    "add/page":
+    {
+        "controller": "Controller/WebsiteController/StructController",
+        "action": "addpage",
+        "method": "get",
+        "authorize": "Superuser"
+    },
+    "review/images":
+    {
+        "controller": "Controller/AdminController/ImagesController",
+        "action": "listUploadsDirectory",
+        "parameters":
+        {
+            "page": "ReviewImages"
+        },
+        "method": "get"
+    },
+    "handle/images":
+    {
+        "controller": "Controller/AdminController/ImagesController",
+        "action": "move",
+        "parameters":
+        {
+            "page": "ReviewImages"
+        },
+        "method": "get"
+    },
+    "delete/file":
+    {
+        "controller": "Controller/AdminController/ImagesController",
+        "action": "delete",
+        "parameters":
+        {
+            "page": "ReviewImages"
+        },
+        "method": "get"
+    }
+}

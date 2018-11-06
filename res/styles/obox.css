@@ -1,0 +1,89 @@
+#obox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+#obox-image {
+    position: fixed;
+    top: 10px;
+}
+
+.obox-div {
+    float: left;
+    width: 100px;
+    margin-right: 15px;
+}
+
+.obox-image {
+    width: 100%;
+}
+
+.obox-image:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+}
+
+#obox-navigator {
+    position: fixed;
+    bottom: 10px;
+    color: #ffffff;
+    background-color: #ffffffa8;
+    height: 20px;
+    text-align: center;
+}
+
+#obox-navigator span {
+    font-size: 0.95em;
+    font-family: monospace;
+    color: #000000;
+}
+
+.svg-icon {
+    width: 16px;
+    height: 26px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    margin-top: 8px;
+}
+
+.image-navigation:hover {
+    background-color: #7a7a7a;
+}
+
+.image-navigation svg path {
+    fill: none;
+    stroke: #aaa;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: 0.2s;
+}
+
+.image-navigation {
+    background-color: #4a4a4a;
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    padding-left: 2px;
+    line-height: 44px;
+    text-align: center;
+    cursor: pointer;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.div-navigation {
+    z-index: 1;
+    position: fixed;
+}
+
+.left-arrow {
+    left: 50px;
+}
+
+.right-arrow {
+    right: 50px;
+}

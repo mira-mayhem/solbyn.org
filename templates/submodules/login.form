@@ -1,0 +1,58 @@
+<div class="general">
+    <form method="post" action="" id="frm_login">
+        <div>
+            <label for="user">Användarnamn:</label>
+            <input type="text" id="user" name="user" placeholder="Användarnamn" />
+        </div>
+        <div>
+            <label for="pass">Lösenord:</label>
+            <input type="password" id="pass" name="pass"  placeholder="Lösenord" />
+        </div>
+        <div>
+            <input type="button" id="submit" value="Logga in" />
+        </div>
+        <div id="loginmessage" class="message"></div>
+    </form>
+</div>
+<script type="text/javascript">
+    $(window).addEvent('domready', function(){
+        $('submit').addEvent('click', function(){
+            submit();
+        });
+    });
+
+var submit = function()
+{
+    $('frm_login').set('send', post);
+    $('frm_login').send();
+}
+
+var post = {
+    url: "/member/dologin",
+    method: 'post',
+    noCache: true,
+    onSuccess: function(response) {
+        wait(false);
+        var responseObject = JSON.parse(response);
+        if (!responseObject.userloginsuccess) {
+            $('loginmessage').set('text', "Inloggningen misslyckades - försök igen");
+        } else {
+            $('frm_login').destroy();
+            var message = new Element('h4');
+            message
+                .set('text', "Inloggningen lyckades!")
+                .inject($(document).getElement('div.login'));
+        }
+        //window.location.reload(true);
+    },
+    onFailure: function() {
+        wait(false);
+        alert("fail");
+    },
+    onRequest: function() {
+        wait(true);
+    }
+};
+
+
+</script>

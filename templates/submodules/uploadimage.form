@@ -1,0 +1,61 @@
+<div class="general">
+    <form id="frm_upload" method="post" enctype="multipart/form-data" action="upload/image">
+        <legend>Ladda upp bilder</legend>
+        <div>
+            <label for="fileuploader" class="file">
+                <input type="file" id="fileuploader" name="fileuploader" />
+                Välj fil
+            </label>
+            <input type="text" name="displayfile" id="displayfile" value="" />
+        </div>
+<!--         <div>
+            <label for="filename">Filnamn:</label>
+            <input type="text" name="filename" id="filename" value="" />
+        </div> -->
+        <div>
+            <input type="button" id="btnsubmit" value="Ladda upp" />
+        </div>
+        <div>
+            <!-- <p>Namnge filen med ÅR-MÅNAD.pdf (ex 2018-09.pdf), så sorteras de i fallande datumordning</p> -->
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    "use strict";
+
+
+    $(window).addEvent("domready", function() {
+        $('btnsubmit').addEvent("click", function(e){
+            var fd = new FormData();
+            var file = $('fileuploader').files[0];
+            fd.append('fileuploader', file);
+            //fd.append('filename', $('filename').value);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'upload/image', true);
+            xhr.onload = function() {
+                var json = JSON.parse(this.response);
+                if (json.success) {
+                    reloadWindow();
+                } else {
+                    alert(json.cause);
+                }
+            };
+            xhr.send(fd);
+        });
+        $('fileuploader').addEvent('change', function(){
+            $('displayfile').value = this.files[0].name;
+        });
+    });
+
+    var reloadWindow = function()
+    {
+        var reloader = new XMLHttpRequest();
+        reloader.open('GET', 'reload/solbybladet', true);
+        reloader.send();
+        reloader.onload = function(){
+            $('filelisting').destroy();
+            $('filelist').appendHTML(this.response);
+        };
+    }
+
+</script>
